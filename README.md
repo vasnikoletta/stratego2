@@ -1,7 +1,7 @@
 Vas Nikoletta
 Neptun ID: h8hvzx
-Kliensoldali webprogramozás, Stratego c. beadandó feladat (1. felvonás)
-Beküldés ideje: 2020. 05. 03.
+Kliensoldali webprogramozás, Stratego c. beadandó feladat (2. felvonás)
+Beküldés ideje: 2020. 06. 01.
 Ezt a megoldást Vas Nikoletta (h8hvzx) küldte be és készítette a Kliensoldali webprogramozás kurzus Stratego feladatához.
 Kijelentem, hogy ez a megoldás a saját munkám.
 Nem másoltam vagy használtam harmadik féltől származó megoldásokat.
