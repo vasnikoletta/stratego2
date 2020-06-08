@@ -11,11 +11,23 @@ hogy mindaddig, amíg egy hallgató egy másik hallgató munkáját - vagy legal
 az fegyelmi vétségnek számít. A fegyelmi vétség legsúlyosabb következménye a hallgató elbocsátása az egyetemről.
 
 Codesandbox:
-https://codesandbox.io/s/9wpx3?file=/
+https://codesandbox.io/s/github/vasnikoletta/stratego2
+
+Az utolsó verziót határidőn túl adtam be (gyakorlatvezetővel egyeztetve).
+A korábbihoz képest javítva:
+- Csak katonával lehet lépni, bombával és zászlóval nem.
+- A játék véget ér, ha valaki megszerezte a zászlót vagy egy játékos minden katonája lekerült a tábláról.
+- A támadó azonosításával (1. vagy 2. játékos) nem keverednek a két játékos lekerült bábui.
+
+Részleges megoldások:
+- A játéktáblán ütközet továbbra is úgy lehetséges, ha a cellán belül és a bábun kívül kattint a játékos.
+- Ütközetkor a csak konzolon jelennek meg az erőviszonyok.
+- A főoldalra való visszatérés után a korábbi lépések a tábláról törlődnek. 
+
+Hiba:
+- ha a játék valamelyik játékos győzelmével ért véget, a 'Vissza' gombra kattintva, majd az előkészítő oldalra jutva, a bábuk disabled-ek, nem tehetők fel újra a táblára, ehhez frissíteni kell az oldalt. A probléma okát nem találtam. 
 - innen futtatva a játékoldalon, a játéktáblát jelképező táblázat mögött nem jelenik meg háttérkép. 
-- böngészőből futtatva a ./src/logo/field.jpg útvonalon található kép a táblázat háttere.
-- nem jöttem rá a különbség okára.
-- codeSB-ban emiatt a képet más útvonalon érem el az App.css-ben, a .board stílusosztály formázásánál. (./public/field.jpg)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
