@@ -25,9 +25,7 @@ Részleges megoldások:
 - A főoldalra való visszatérés után a korábbi lépések a tábláról törlődnek. 
 
 Hiba:
-- ha a játék valamelyik játékos győzelmével ért véget, a 'Vissza' gombra kattintva, majd az előkészítő oldalra jutva, a bábuk disabled-ek, nem tehetők fel újra a táblára, ehhez frissíteni kell az oldalt. A probléma okát nem találtam. 
-- innen futtatva a játékoldalon, a játéktáblát jelképező táblázat mögött nem jelenik meg háttérkép. 
-
+- ha a játék valamelyik játékos győzelmével ért véget, a 'Vissza' gombra kattintva, majd az előkészítő oldalra jutva, a bábuk disabled-ek, nem tehetők fel újra a táblára, ehhez frissíteni kell az oldalt. A probléma okát nem találtam.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
