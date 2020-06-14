@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { HomeButton, PrepButton } from './context.js';
+import { useDispatch, useSelector } from "react-redux";
+import { states, setPage } from "./redux/stateManagement.js";
+import { strategoServerConnection } from './websocket/strategoServerConnection.js';
 
 export function Rules() {
   return (
@@ -70,13 +73,25 @@ export function ShowJoinPlatformButton() {
   );
 }
 
-//ezt a statemanagementbe at fogom szervezni
-
 export const JoinRoom = () => {
-  //a room a jatekszoba azonositojat fogja tarolni - jelenleg nem hasznalt. (Warning)
-  const [room, setRoom] = useState({});
+  const dispatch = useDispatch();
+  //kell meg itt ellenorizni, h az a szoba van-e tele, amelyikbe csatlakozni akartam? (v a szerver biztosítja a jo mukodest?)
+  strategoServerConnection.socket.on("room-is-full", (ack) => {
+    console.log("Szerver szolt, h megvagyunk.");
+    console.log(ack);
+    dispatch(setPage(states.PREP));
+  });
 
-  const handleJoin = (e) => setRoom(e.currentTarget.value);
+  const handleJoin = (e) => {
+    const roomId = e.currentTarget.value;
+    strategoServerConnection.socket.emit("join-room", roomId, (ack) => {
+      console.log("csatlakozasi kiserlet szobahoz: "); 
+      console.log(ack);
+      if (ack.status === "error") {
+        console.log("A szobához való csatlakozás sikertelen! " + ack.message);
+      }
+    });
+  }
 
   return (
     <>
@@ -90,8 +105,6 @@ export const JoinRoom = () => {
           <input type="text" name="roomNr" onChange={handleJoin} />
         </div>
       </form>
-      <PrepButton/>
-      <HomeButton/>
     </div>
     </>
   );

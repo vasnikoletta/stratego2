@@ -3,6 +3,7 @@ import logo from './logo/stratego.jpg';
 import './App.css';
 import { Navigation } from "./components/context.js";
 import { Rules, ShowRulesButton } from "./components/hiddenElements.js";
+import { strategoServerConnection } from './components/websocket/strategoServerConnection';
 /*
 import { useEffect } from 'react';
 import { Provider, useDispatch } from "react-redux";
@@ -11,6 +12,14 @@ import { webSocket, webSocketConnect } from './components/websocket/strategoServ
 */
 
 function App() {
+
+  strategoServerConnection.connect();
+
+  if (strategoServerConnection.isConnected) {
+    console.log("Csatlakoztatva a szerverhez.");
+  } else {
+    console.log("Csatlakozás a szerverhez sikertelen.");
+  }
   /*
   constructor(props) {
     super(props)

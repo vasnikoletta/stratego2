@@ -1,10 +1,19 @@
-import { io } from 'socket.io-client';
+import io from 'socket.io-client';
 
 export class StrategoServerConnection {
-  socket = null;
-  connectToServer() {
-    this.socket = io("http://webprogramozas.inf.elte.hu:3030");
+  connect() {
+    const server = "http://webprogramozas.inf.elte.hu:3030";
+    this.socket = io(server);
   }
+ 
+  get isConnected() {
+    return Boolean(this.socket);
+  }
+}
+
+export const strategoServerConnection = new StrategoServerConnection();
+
+ /*
   sendMessage(target, message) {
     this.socket.emit(target, message);
   }
@@ -18,10 +27,4 @@ export class StrategoServerConnection {
     this.socket.on(target, listener);
     return () => this.socket.off(target, listener);
   }
-}
-
-export const webSocket = new StrategoServerConnection();
-
-export const webSocketConnect = () => dispatch => {
-  webSocket.connectToServer();
-};
+  */
