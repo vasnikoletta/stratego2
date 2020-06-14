@@ -13,11 +13,7 @@ const BOARD = "BOARD";
 const OOB1 = "OOB1";
 const OOB2 = "OOB2";
 const GAMEOVER = "GAMEOVER";
-const ROOM = "ROOM";
-const PLAYERSTATUS1 = "PLAYERSTATUS1";
-const PLAYERSTATUS2 = "PLAYERSTATUS2";
-const PLAYERSOCKETID1 = "PLAYERSOCKET1";
-const PLAYERSOCKETID2 = "PLAYERSOCKET2";
+//const ROOM = "ROOM";
 
 
 export const states = {
@@ -129,47 +125,15 @@ const gameOverReducer = (state = false, action) => {
   }
   return state;
 };
-
-const roomReducer = (state = null, action) => {
+/*
+const roomReducer = (state = null, action) = {
   const {type, payload} = action;
   if (type === ROOM) {
     return payload;
   }
   return state;
 };
-
-const player1isReadyReducer = (state = false, action) => {
-  const {type, payload} = action;
-  if (type === PLAYERSTATUS1) {
-    return payload;
-  }
-  return state;
-};
-
-const player2isReadyReducer = (state = false, action) => {
-  const {type, payload} = action;
-  if (type === PLAYERSTATUS2) {
-    return payload;
-  }
-  return state;
-};
-
-const player1idReducer = (state = null, action) => {
-  const {type, payload} = action;
-  if (type === PLAYERSOCKETID1) {
-    return payload;
-  }
-  return state;
-};
-
-const player2idReducer = (state = null, action) => {
-  const {type, payload} = action;
-  if (type === PLAYERSOCKETID2) {
-    return payload;
-  }
-  return state;
-};
-
+*/
 const rootReducer = combineReducers({
   page: pageReducer,
   player: playerReducer,
@@ -178,11 +142,7 @@ const rootReducer = combineReducers({
   outOfBoard1: outOfBattleReducer1,
   outOfBoard2: outOfBattleReducer2,
   gameOver: gameOverReducer,
-  roomId: roomReducer,
-  player1socketId: player1idReducer,
-  player2socketId: player2idReducer,
-  player1isReady: player1isReadyReducer,
-  player2isReady: player2isReadyReducer
+  //roomId: roomReducer
 });
 
 export const store = createStore(rootReducer);
@@ -194,11 +154,7 @@ export const getBoard = (state) => state.board;
 export const getOutOfBattle1 = (state) => state.outOfBoard1;
 export const getOutOfBattle2 = (state) => state.outOfBoard2;
 export const isGameOver = (state) => state.gameOver;
-export const getRoomId = (state) => state.roomId;
-export const getPlayer1Status = (state) => state.player1isReady;
-export const getPlayer2Status = (state) => state.player2isReady;
-export const getPlayer1SocketId = (state) => state.player1socketId;
-export const getPlayer2SocketId = (state) => state.player2socketId;
+//export const getRoomId = (state) => state.roomId;
 
 //action creators
 export const setPage = (x) => ({
@@ -235,28 +191,9 @@ export const setGameOver = (x) => ({
   type: GAMEOVER,
   payload: x
 });
-
-export const saveRoomId = (x) => ({
+/*
+export const webSocketConnect = (x) => ({
   type: ROOM,
   payload: x
 });
-
-export const savePlayer1SocketId = (x) => ({
-  type: PLAYERSOCKETID1,
-  payload: x
-});
-
-export const savePlayer2SocketId = (x) => ({
-  type: PLAYERSOCKETID2,
-  payload: x
-});
-
-export const setPlayer1Status = (b) => ({
-  type: PLAYERSTATUS1,
-  payload: b
-});
-
-export const setPlayer2Status = (b) => ({
-  type: PLAYERSTATUS2,
-  payload: b
-});
+*/

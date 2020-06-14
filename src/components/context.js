@@ -3,9 +3,9 @@ import { MainPage } from './pages/MainPage.js';
 import { WaitPage } from './pages/WaitPage.js';
 import { PrepPage } from './pages/PrepPage.js';
 import { GamePage } from './pages/GamePage.js';
-import { states, getPage, setPage, getOutOfBattle1, setBoard, initialPrepState, initialArmy, setOOB1, setOOB2, setGameOver, saveRoomId } from './redux/stateManagement.js';
+import { states, getPage, setPage, getOutOfBattle1, setBoard, initialPrepState, initialArmy, setOOB1, setOOB2, setGameOver } from './redux/stateManagement.js';
 import { useDispatch, useSelector } from "react-redux";
-import { strategoServerConnection } from './websocket/strategoServerConnection.js';
+//import { webSocket } from './websocket/strategoServerConnection.js';
 
 export const Navigation = () => {
   const page = useSelector(getPage);
@@ -55,15 +55,19 @@ export const HomeButton = () => {
 export const WaitButton = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    strategoServerConnection.socket.emit("create-room", (ack) => {
-      if (ack.status === "ok") {
-        console.log(ack.roomId);
-        dispatch(saveRoomId(ack.roomId));
-        dispatch(setPage(states.WAIT));
-      } else {
-        console.log(ack.message);
-      }
-    });
+    dispatch(setPage(states.WAIT));
+    //webSocket.connectToServer();
+    //webSocket.sendMessage("create-room", (ack) => {console.log(ack)});
+    //console.log("semmi" + webSocket.socket);
+    /*
+    if (ack.states === 'ok') {
+      dispatch(setPage(states.WAIT));
+    } else {
+      console.log(ack.error);
+    }
+    */
+    
+
   };
   
   return (
